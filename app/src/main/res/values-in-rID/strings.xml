@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Langgan</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="save">Save</string>
-    <string name="connection_not_available">Connection is not available</string>
 </resources>
