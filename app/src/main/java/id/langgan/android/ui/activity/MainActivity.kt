@@ -4,11 +4,16 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import id.langgan.android.BuildConfig
 import id.langgan.android.R
 import id.langgan.android.model.Auth
+import id.langgan.android.ui.fragment.*
 import id.langgan.android.utility.Vars
+import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -32,5 +37,33 @@ class MainActivity : AppCompatActivity() {
             Timber.d("user : %s", auth.token)
             Timber.d("user : %s", auth.user?.email)
         }
+
+        bottom_navigation.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener {
+            override fun onNavigationItemSelected(item: MenuItem): Boolean {
+                var fragment : Fragment? = null
+
+                when (item.itemId) {
+                    R.id.home_menu -> fragment = HomeFragment()
+                    R.id.favorite_menu -> fragment = FavoriteFragment()
+                    R.id.subscriptions_menu -> fragment = SubscriptionsFragment()
+                    R.id.inbox_menu -> fragment = InboxFragment()
+                    R.id.account_menu -> fragment = ProfileFragment()
+                }
+                return loadFragment(fragment)
+            }
+        })
+
+        loadFragment(HomeFragment())
     }
+
+    private fun loadFragment(fragment: Fragment?): Boolean {
+        if (fragment != null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment, fragment)
+                .commit()
+            return true
+        }
+        return false
+    }
+
 }
