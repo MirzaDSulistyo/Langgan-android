@@ -21,7 +21,7 @@ buildscript {
                 constraintLayout: '1.1.3',
                 roomVersion: '2.1.0-alpha01',
                 archLifecycleVersion : '2.0.0',
-                appCompat: '1.1.0-alpha01',
+                appCompat: '1.1.0-alpha02',
                 coreKtx: '1.1.0-alpha04',
                 dagger: '2.17'
         ]

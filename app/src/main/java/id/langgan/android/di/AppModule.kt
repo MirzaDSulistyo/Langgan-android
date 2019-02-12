@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.Provides
 import id.langgan.android.data.api.ApiService
 import id.langgan.android.data.database.AppDb
+import id.langgan.android.data.database.dao.ProductDao
 import id.langgan.android.data.database.dao.UserDao
 import id.langgan.android.utility.LiveDataCallAdapterFactory
 import id.langgan.android.utility.Vars
@@ -45,6 +46,12 @@ class AppModule {
     @Provides
     fun provideUserDao(db: AppDb): UserDao {
         return db.userDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideProductDao(db: AppDb): ProductDao {
+        return db.productDao()
     }
 
 }

@@ -24,6 +24,7 @@ import id.langgan.android.utility.Helper
 import id.langgan.android.utility.InternetConnection
 import id.langgan.android.utility.Vars
 import id.langgan.android.viewmodel.UserViewModel
+import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import kotlinx.android.synthetic.main.activity_login.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -96,4 +97,8 @@ class LoginActivity : AppCompatActivity(), HasSupportFragmentInjector {
     }
 
     override fun supportFragmentInjector() = dispatchingAndroidInjector
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))
+    }
 }

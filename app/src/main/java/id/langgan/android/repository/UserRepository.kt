@@ -18,7 +18,7 @@ class UserRepository
 @Inject constructor(
     private val appExecutors: AppExecutors,
     private val db: AppDb,
-    private val brandDao: UserDao,
+    private val userDao: UserDao,
     private val apiService: ApiService
 ) {
     private val rateLimit = RateLimiter<String>(2, TimeUnit.MINUTES)
