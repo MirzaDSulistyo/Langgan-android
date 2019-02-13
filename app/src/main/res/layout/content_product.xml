@@ -17,7 +17,7 @@
     <LinearLayout
         android:id="@+id/cv_product"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="horizontal"
         android:paddingLeft="8dp"
@@ -25,13 +25,17 @@
         app:zebraBackground="@{position}">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
             android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="200dp"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{product.photo}" />
 
             <TextView
                 android:id="@+id/tv_brand_name"

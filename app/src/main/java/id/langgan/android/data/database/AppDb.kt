@@ -16,7 +16,7 @@ import id.langgan.android.model.User
         User::class,
         Product::class,
         Auth::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class AppDb : RoomDatabase() {

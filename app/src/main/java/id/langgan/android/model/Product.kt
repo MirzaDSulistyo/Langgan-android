@@ -20,6 +20,9 @@ data class Product (
     @SerializedName("description")
     @Expose
     val description: String? = null,
+    @SerializedName("photo")
+    @Expose
+    val photo: String? = null,
     @SerializedName("brand")
     @Expose
     val brand: String? = null,
