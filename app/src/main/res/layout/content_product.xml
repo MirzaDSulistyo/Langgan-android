@@ -18,11 +18,11 @@
         android:id="@+id/cv_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
         android:background="@color/white"
         android:orientation="horizontal"
         android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        app:zebraBackground="@{position}">
+        android:paddingRight="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,17 +33,35 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="200dp"
+                android:minHeight="100dp"
                 android:scaleType="centerCrop"
                 app:imageUrl="@{product.photo}" />
 
             <TextView
-                android:id="@+id/tv_brand_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{product.description}"
+                android:textAppearance="@style/TextAppearance.SemiBold12"
+                android:textColor="#767676"
+                tools:text="Product Name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
                 android:text="@{product.name}"
-                android:textAppearance="@style/TextAppearance.SemiBold14"
-                android:textColor="#333333"
+                android:textAppearance="@style/TextAppearance.Bold14"
+                android:textColor="#484848"
+                tools:text="Product Name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@{Integer.toString(product.price)}"
+                android:textAppearance="@style/TextAppearance.Regular12"
+                android:textColor="#484848"
                 tools:text="Product Name" />
 
         </LinearLayout>

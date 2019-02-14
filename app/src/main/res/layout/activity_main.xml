@@ -19,8 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@color/white"
-        app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black"
+        app:itemIconTint="#f97a7e"
+        app:itemTextColor="#FF5A5F"
         app:menu="@menu/bottom_navigation_menu" />
 
 </LinearLayout>
