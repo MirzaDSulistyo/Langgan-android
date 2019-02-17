@@ -41,7 +41,7 @@ class HomeFragment : Fragment(), Injectable {
     private var dataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
 
     var binding by autoCleared<FragmentHomeBinding>()
-    var adapter by autoCleared<ProductAdapter>()
+    private var adapter by autoCleared<ProductAdapter>()
 
     private var auth: Auth? = null
 
@@ -94,12 +94,13 @@ class HomeFragment : Fragment(), Injectable {
         viewModel.products.observe(viewLifecycleOwner, Observer { result ->
             Timber.d("status : %s", result.status)
             Timber.d("message : %s", result.message)
+            Timber.d("message : ${result.data?.size}")
             adapter.submitList(result?.data)
             refresh_products.isRefreshing = false
         })
     }
 
     private fun details(product: Product) {
-        //
+        Timber.d("product ${product.name}")
     }
 }

@@ -47,13 +47,14 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
                 android:src="@drawable/ic_search"
-                app:tint="#939393" />
+                app:tint="#939393"
+                tools:ignore="ContentDescription" />
 
             <TextView
-                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Try Groceries" />
+                android:layout_gravity="center_vertical"
+                android:text="@string/try_groceries" />
 
         </LinearLayout>
 
@@ -64,7 +65,7 @@
             android:paddingLeft="8dp"
             android:paddingTop="16dp"
             android:paddingRight="8dp"
-            android:text="Product near by"
+            android:text="@string/product_near_by"
             android:textAppearance="@style/TextAppearance.Bold18"
             android:textColor="#484848"
             app:layout_constraintTop_toBottomOf="@+id/search" />

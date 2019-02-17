@@ -3,11 +3,11 @@ package id.langgan.android.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class ProductList {
+class FavoriteList {
 
     @SerializedName("data")
     @Expose
-    var products: List<Product>? = null
+    var data: List<Favorite>? = null
 
     @SerializedName("status")
     @Expose

@@ -10,6 +10,7 @@ import id.langgan.android.R
 import id.langgan.android.model.Product
 import id.langgan.android.ui.common.DataBoundListAdapter
 import id.langgan.android.databinding.ContentProductBinding
+import timber.log.Timber
 
 class ProductAdapter(
     private val dataBindingComponent: DataBindingComponent,
@@ -49,5 +50,8 @@ class ProductAdapter(
     override fun bind(binding: ContentProductBinding, item: Product, position: Int) {
         binding.product = item
         binding.position = position
+
+        Timber.d("product ${item.createdAt}")
+        Timber.d("product ${item.updatedAt}")
     }
 }

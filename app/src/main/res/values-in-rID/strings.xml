@@ -12,4 +12,7 @@
     <string name="account">Account</string>
     <string name="empty_result">Data is empty</string>
     <string name="descriptions">Descriptions</string>
+    <string name="product_near_by">Product near by</string>
+    <string name="try_groceries">Try Groceries</string>
+    <string name="plan">Plan</string>
 </resources>

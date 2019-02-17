@@ -2,6 +2,7 @@ package id.langgan.android.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import id.langgan.android.ui.fragment.FavoriteFragment
 import id.langgan.android.ui.fragment.HomeFragment
 
 @Suppress("unused")
@@ -9,4 +10,7 @@ import id.langgan.android.ui.fragment.HomeFragment
 abstract class FragmentBuildersModule {
     @ContributesAndroidInjector
     abstract fun contributeHomeFragment(): HomeFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeFavoriteFragment(): FavoriteFragment
 }

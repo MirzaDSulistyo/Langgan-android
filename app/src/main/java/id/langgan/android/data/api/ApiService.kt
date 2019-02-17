@@ -2,6 +2,7 @@ package id.langgan.android.data.api
 
 import androidx.lifecycle.LiveData
 import id.langgan.android.model.Auth
+import id.langgan.android.model.FavoriteList
 import id.langgan.android.model.ProductList
 import retrofit2.Call
 import retrofit2.http.*
@@ -23,4 +24,11 @@ interface ApiService {
     fun getProduct(
         @Header("token") token: String
     ): LiveData<ApiResponse<ProductList>>
+
+    /* ===== FAVORITE ===== */
+
+    @GET("favorite")
+    fun getFavorites(
+        @Header("token") token: String
+    ): LiveData<ApiResponse<FavoriteList>>
 }
