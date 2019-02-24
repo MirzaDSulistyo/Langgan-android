@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tv_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/subscriptions"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    <data>
 
-</RelativeLayout>
+        <import type="androidx.lifecycle.LiveData" />
+
+        <import type="id.langgan.android.data.vo.Resource" />
+
+        <import type="java.util.List" />
+
+        <import type="id.langgan.android.model.Plan" />
+
+        <import type="id.langgan.android.data.vo.Status" />
+
+        <variable
+            name="plans"
+            type="LiveData&lt;Resource&lt;List&lt;Plan>>>" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:id="@+id/title_01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingTop="16dp"
+            android:paddingRight="8dp"
+            android:text="@string/your_delivery_plan"
+            android:textAppearance="@style/TextAppearance.Bold18"
+            android:textColor="#484848"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refresh_plans"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/title_01">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_plans"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:spanCount="2" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <TextView
+            android:id="@+id/no_results_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_result"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:visibleGone="@{plans.status == Status.SUCCESS &amp;&amp; plans.data.size == 0}"
+            tools:layout_editor_absoluteY="247dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

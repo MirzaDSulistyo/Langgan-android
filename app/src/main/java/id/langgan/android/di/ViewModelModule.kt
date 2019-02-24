@@ -5,10 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import id.langgan.android.viewmodel.FavoriteViewModel
-import id.langgan.android.viewmodel.ProductViewModel
-import id.langgan.android.viewmodel.UserViewModel
-import id.langgan.android.viewmodel.ViewModelFactory
+import id.langgan.android.viewmodel.*
 
 @Suppress("unused")
 @Module
@@ -28,6 +25,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(FavoriteViewModel::class)
     abstract fun bindDataFavoriteViewModel(favorite: FavoriteViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PlanViewModel::class)
+    abstract fun bindDataPlanViewModel(plan: PlanViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

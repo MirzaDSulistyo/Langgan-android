@@ -7,6 +7,7 @@ import dagger.Provides
 import id.langgan.android.data.api.ApiService
 import id.langgan.android.data.database.AppDb
 import id.langgan.android.data.database.dao.FavoriteDao
+import id.langgan.android.data.database.dao.PlanDao
 import id.langgan.android.data.database.dao.ProductDao
 import id.langgan.android.data.database.dao.UserDao
 import id.langgan.android.utility.LiveDataCallAdapterFactory
@@ -59,6 +60,12 @@ class AppModule {
     @Provides
     fun provideFavoriteDao(db: AppDb): FavoriteDao {
         return db.favoriteDao()
+    }
+
+    @Singleton
+    @Provides
+    fun providePlanDao(db: AppDb): PlanDao {
+        return db.planDao()
     }
 
 }
