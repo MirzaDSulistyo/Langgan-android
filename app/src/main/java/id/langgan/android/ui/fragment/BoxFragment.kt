@@ -146,12 +146,17 @@ class BoxFragment: Fragment(), Injectable {
             viewModel.refresh()
         }
 
+        refresh_boxes.visibility = View.GONE
+        shimmer.startShimmer()
         binding.boxes = viewModel.boxes
         viewModel.boxes.observe(viewLifecycleOwner, Observer { result ->
             if (result.status == SUCCESS) {
                 adapter.submitList(result?.data)
                 refresh_boxes.isRefreshing = false
                 boxes.addAll(result?.data!!)
+                refresh_boxes.visibility = View.VISIBLE
+                shimmer.visibility = View.GONE
+                shimmer.stopShimmer()
             }
         })
     }

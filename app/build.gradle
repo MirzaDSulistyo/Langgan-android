@@ -59,6 +59,7 @@ dependencies {
     // UI Libraries
     implementation 'io.github.inflationx:calligraphy3:3.0.0'
     implementation 'io.github.inflationx:viewpump:1.0.0'
+    implementation 'com.facebook.shimmer:shimmer:0.4.0'
 
     // image loading and caching
     implementation 'com.squareup.picasso:picasso:2.71828'

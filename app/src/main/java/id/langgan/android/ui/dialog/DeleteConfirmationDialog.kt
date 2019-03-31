@@ -22,8 +22,8 @@ class DeleteConfirmationDialog : DialogFragment() {
         val message = getString(R.string.delete_messages, item)
 
         builder.setMessage(message)
-            .setPositiveButton(R.string.yes) { dialog, id -> onDeleteConfirmed() }
-            .setNegativeButton(R.string.cancel) { dialog, id -> dialog.dismiss() }
+            .setPositiveButton(R.string.yes) { _, _ -> onDeleteConfirmed() }
+            .setNegativeButton(R.string.cancel) { dialog, _ -> dialog.dismiss() }
         return builder.create()
     }
 

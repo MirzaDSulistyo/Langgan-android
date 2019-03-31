@@ -39,10 +39,14 @@
         <activity
             android:name=".ui.activity.ProductActivity"
             android:theme="@style/AppTheme.Fullscreen" />
-        <activity android:name=".ui.activity.FormProductActivity" />
-        <activity android:name=".ui.activity.FormBoxActivity" />
-        <activity android:name=".ui.activity.BoxActivity"
-            android:theme="@style/AppTheme.Fullscreen"/>
+        <activity
+            android:name=".ui.activity.FormProductActivity" />
+        <activity
+            android:name=".ui.activity.FormBoxActivity"
+            android:theme="@style/AppTheme.Fullscreen" />
+        <activity
+            android:name=".ui.activity.BoxActivity"
+            android:theme="@style/AppTheme.Fullscreen" />
     </application>
 
 </manifest>

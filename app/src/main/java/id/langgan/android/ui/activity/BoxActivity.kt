@@ -27,7 +27,7 @@ class BoxActivity : AppCompatActivity(), HasSupportFragmentInjector {
         // Handle Toolbar
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar!!.title = getString(R.string.products)
+        supportActionBar!!.title = getString(R.string.box)
 
         loadFragment(BoxFragment())
     }
