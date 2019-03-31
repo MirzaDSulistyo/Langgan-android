@@ -5,21 +5,21 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import id.langgan.android.data.vo.Resource
-import id.langgan.android.model.Product
-import id.langgan.android.repository.ProductRepository
-import id.langgan.android.utility.AbsentLiveData
-import okhttp3.RequestBody
+import id.langgan.android.model.Box
+import id.langgan.android.repository.BoxRepository
 import javax.inject.Inject
+import id.langgan.android.utility.AbsentLiveData
 
-class ProductViewModel
+class BoxViewModel
 @Inject constructor(
-    private val productRepository: ProductRepository
+    private val boxRepository: BoxRepository
 ) : ViewModel()
 {
     private val _token = MutableLiveData<String>()
     private val _id = MutableLiveData<String>()
     val token: LiveData<String>
         get() = _token
+
     val id: LiveData<String>
         get() = _id
 
@@ -41,24 +41,12 @@ class ProductViewModel
         }
     }
 
-    val products: LiveData<Resource<List<Product>>> = Transformations
+    val boxes: LiveData<Resource<List<Box>>> = Transformations
         .switchMap(_token) {token ->
             if (token == null) {
                 AbsentLiveData.create()
             } else {
-                productRepository.getProducts(token)
+                boxRepository.getBoxes(token, id.value!!)
             }
         }
-
-    fun saveProduct(token: String, body: RequestBody): LiveData<Resource<Product>> {
-        return productRepository.save(token, body)
-    }
-
-    fun updateProduct(token: String, id: String, fields: Map<String, String>): LiveData<Resource<Product>> {
-        return productRepository.update(token, id, fields)
-    }
-
-    fun deleteProduct(token: String, id: String): LiveData<Resource<Product>> {
-        return productRepository.delete(token, id)
-    }
 }

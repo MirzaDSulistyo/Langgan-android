@@ -2,9 +2,7 @@ package id.langgan.android.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import id.langgan.android.ui.fragment.FavoriteFragment
-import id.langgan.android.ui.fragment.HomeFragment
-import id.langgan.android.ui.fragment.SubscriptionsFragment
+import id.langgan.android.ui.fragment.*
 
 @Suppress("unused")
 @Module
@@ -17,4 +15,13 @@ abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeSubscriptionsFragment(): SubscriptionsFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeProfileFragment(): ProfileFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeProductFragment(): ProductFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeBoxFragment(): BoxFragment
 }

@@ -8,7 +8,9 @@ import id.langgan.android.data.database.AppDb
 import id.langgan.android.data.database.dao.UserDao
 import id.langgan.android.data.vo.Resource
 import id.langgan.android.model.Auth
+import id.langgan.android.model.Profile
 import id.langgan.android.utility.RateLimiter
+import java.net.SocketTimeoutException
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -28,19 +30,51 @@ class UserRepository
         val data = MutableLiveData<Resource<Auth>>()
 
         appExecutors.networkIO().execute {
-            val response = apiService.login(email, pass).execute()
-            val apiResponse = ApiResponse.create(response)
+            try {
+                val response = apiService.login(email, pass).execute()
+                val apiResponse = ApiResponse.create(response)
 
-            when (apiResponse) {
-                is ApiSuccessResponse -> {
-                    data.postValue(Resource.success(apiResponse.body))
+                when (apiResponse) {
+                    is ApiSuccessResponse -> {
+                        data.postValue(Resource.success(apiResponse.body))
+                    }
+                    is ApiEmptyResponse -> {
+                        data.postValue(Resource.success(data = null))
+                    }
+                    is ApiErrorResponse -> {
+                        data.postValue(Resource.error(apiResponse.errorMessage, null))
+                    }
                 }
-                is ApiEmptyResponse -> {
-                    data.postValue(Resource.success(data = null))
+            } catch (e: SocketTimeoutException) {
+                data.postValue(Resource.error("Socket Timeout", null))
+            }
+        }
+
+        return data
+    }
+
+    fun profile(token: String): LiveData<Resource<Profile>> {
+
+        val data = MutableLiveData<Resource<Profile>>()
+
+        appExecutors.networkIO().execute {
+            try {
+                val response = apiService.profile(token).execute()
+                val apiResponse = ApiResponse.create(response)
+
+                when (apiResponse) {
+                    is ApiSuccessResponse -> {
+                        data.postValue(Resource.success(apiResponse.body))
+                    }
+                    is ApiEmptyResponse -> {
+                        data.postValue(Resource.success(data = null))
+                    }
+                    is ApiErrorResponse -> {
+                        data.postValue(Resource.error(apiResponse.errorMessage, null))
+                    }
                 }
-                is ApiErrorResponse -> {
-                    data.postValue(Resource.error(apiResponse.errorMessage, null))
-                }
+            } catch (e: SocketTimeoutException) {
+                data.postValue(Resource.error("Socket Timeout", null))
             }
         }
 

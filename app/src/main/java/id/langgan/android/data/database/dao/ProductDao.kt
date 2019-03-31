@@ -19,5 +19,5 @@ abstract class ProductDao {
     abstract fun load(): LiveData<List<Product>>
 
     @Query("DELETE FROM product WHERE id = :id")
-    abstract fun deleteByProductId(id: Int)
+    abstract fun deleteByProductId(id: String)
 }

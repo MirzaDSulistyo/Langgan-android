@@ -1,10 +1,8 @@
 package id.langgan.android.data.api
 
 import androidx.lifecycle.LiveData
-import id.langgan.android.model.Auth
-import id.langgan.android.model.FavoriteList
-import id.langgan.android.model.PlanList
-import id.langgan.android.model.ProductList
+import id.langgan.android.model.*
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -19,12 +17,45 @@ interface ApiService {
         @Field("password") password: String
     ): Call<Auth>
 
+    /* ====== PROFILE ===== */
+
+    @GET("users/profile")
+    fun profile(
+        @Header("token") token: String
+    ): Call<Profile>
+
     /* ===== PRODUCT ===== */
 
     @GET("product")
     fun getProduct(
         @Header("token") token: String
     ): LiveData<ApiResponse<ProductList>>
+
+    @GET("product/list/{id}")
+    fun getProductById(
+        @Header("token") token: String,
+        @Path("id") id: String
+    ): LiveData<ApiResponse<ProductList>>
+
+    @POST("product/new")
+    fun postProduct(
+        @Header("token") token: String,
+        @Body body: RequestBody
+    ): Call<Product>
+
+    @FormUrlEncoded
+    @PUT("product/{id}")
+    fun putProduct(
+        @Header("token") token: String,
+        @Path("id") id: String,
+        @FieldMap fields: Map<String, String>
+    ): Call<Product>
+
+    @DELETE("product/{id}")
+    fun deleteProduct(
+        @Header("token") token: String,
+        @Path("id") id: String
+    ): Call<Product>
 
     /* ===== FAVORITE ===== */
 
@@ -39,4 +70,12 @@ interface ApiService {
     fun getSubscriptions(
         @Header("token") token: String
     ): LiveData<ApiResponse<PlanList>>
+
+    /* ====== BOX ===== */
+
+    @GET("box/list/{id}")
+    fun getBox(
+        @Header("token") token: String,
+        @Path("id") id: String
+    ): LiveData<ApiResponse<BoxList>>
 }

@@ -2,10 +2,7 @@ package id.langgan.android.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import id.langgan.android.data.database.dao.FavoriteDao
-import id.langgan.android.data.database.dao.PlanDao
-import id.langgan.android.data.database.dao.ProductDao
-import id.langgan.android.data.database.dao.UserDao
+import id.langgan.android.data.database.dao.*
 import id.langgan.android.model.*
 
 /**
@@ -20,7 +17,7 @@ import id.langgan.android.model.*
         BoxObj::class,
         Plan::class,
         Auth::class],
-    version = 10,
+    version = 11,
     exportSchema = false
 )
 abstract class AppDb : RoomDatabase() {
@@ -32,5 +29,7 @@ abstract class AppDb : RoomDatabase() {
     abstract fun favoriteDao(): FavoriteDao
 
     abstract fun planDao(): PlanDao
+
+    abstract fun boxDao(): BoxDao
 
 }

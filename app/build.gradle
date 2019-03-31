@@ -76,6 +76,7 @@ dependencies {
 
     // Anko
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
+    implementation "org.jetbrains.anko:anko-design:$anko_version"
 
     // Loader
     implementation 'com.kaopiz:kprogresshud:1.2.0'

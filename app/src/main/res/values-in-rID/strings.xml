@@ -17,4 +17,16 @@
     <string name="plan">Plan</string>
     <string name="your_delivery_plan">Your Delivery Plan</string>
     <string name="notifications">Notifications</string>
+    <string name="store">Store</string>
+    <string name="close">Close</string>
+    <string name="product_name">Product name</string>
+    <string name="sku">SKU</string>
+    <string name="price">Price</string>
+    <string name="photos">Photos</string>
+    <string name="add_photo">Add photo</string>
+    <string name="brand">Brand</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete_messages">Are you sure to delete <b>%1$s</b> ?</string>
+    <string name="products">Products</string>
 </resources>

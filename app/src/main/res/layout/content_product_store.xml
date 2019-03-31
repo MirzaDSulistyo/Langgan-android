@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="product"
+            type="id.langgan.android.model.Product"/>
+
+        <variable
+            name="position"
+            type="Integer"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cv_product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:background="#FAFAFA"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{product.photo}"
+            tools:ignore="ContentDescription"/>
+
+        <TextView
+            android:id="@+id/name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@{product.name}"
+            android:textAppearance="@style/TextAppearance.Bold14"
+            android:textColor="#484848"
+            tools:text="Product Name"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/desc"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            app:layout_constraintLeft_toRightOf="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{product.description}"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="@style/TextAppearance.SemiBold12"
+            android:textColor="#767676"
+            tools:text="Product Descriptions"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/price"
+            app:layout_constraintTop_toBottomOf="@+id/desc"
+            app:layout_constraintLeft_toRightOf="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{Integer.toString(product.price)}"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="@style/TextAppearance.Regular12"
+            android:textColor="#484848"
+            tools:text="Rp 12,000"
+            android:layout_marginStart="10dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -23,7 +23,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".ui.activity.MainActivity"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+            android:theme="@style/AppTheme.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,6 +33,16 @@
         <activity
             android:name=".ui.activity.LoginActivity"
             android:theme="@style/AppTheme.Fullscreen" />
+        <activity
+            android:name=".ui.activity.StoreActivity"
+            android:theme="@style/AppTheme.Fullscreen" />
+        <activity
+            android:name=".ui.activity.ProductActivity"
+            android:theme="@style/AppTheme.Fullscreen" />
+        <activity android:name=".ui.activity.FormProductActivity" />
+        <activity android:name=".ui.activity.FormBoxActivity" />
+        <activity android:name=".ui.activity.BoxActivity"
+            android:theme="@style/AppTheme.Fullscreen"/>
     </application>
 
 </manifest>
