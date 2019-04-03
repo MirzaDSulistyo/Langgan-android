@@ -23,7 +23,7 @@ class Prefs {
         return userPrefs.getString(PREF_PROFILE_KEY, "")!!
     }
 
-    fun putUser(data: String) {
+    fun putUser(data: String?) {
         val userPrefs = context?.getSharedPreferences(PREF_AUTH, Context.MODE_PRIVATE)
         val editor = userPrefs?.edit()
         editor?.putString(PREF_AUTH_KEY, data)

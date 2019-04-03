@@ -22,6 +22,8 @@ import id.langgan.android.model.Auth
 import id.langgan.android.model.Profile
 import id.langgan.android.utility.autoCleared
 import id.langgan.android.ui.activity.StoreActivity
+import id.langgan.android.utility.Prefs
+import id.langgan.android.ui.activity.LoginActivity
 
 class ProfileFragment: Fragment(), Injectable {
 
@@ -67,6 +69,13 @@ class ProfileFragment: Fragment(), Injectable {
 
         binding.store.setOnClickListener {
             startActivity(Intent(activity, StoreActivity::class.java))
+        }
+
+        binding.logout.setOnClickListener {
+            val prefs = Prefs()
+            prefs.context = context
+            prefs.putUser(null)
+            startActivity(Intent(activity, LoginActivity::class.java))
         }
     }
 }

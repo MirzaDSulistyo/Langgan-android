@@ -33,6 +33,7 @@ import kotlinx.android.synthetic.main.fragment_box.*
 import id.langgan.android.data.vo.Status.SUCCESS
 import id.langgan.android.model.Profile
 import id.langgan.android.ui.activity.FormBoxActivity
+import org.jetbrains.anko.startActivity
 
 class BoxFragment: Fragment(), Injectable {
 
@@ -148,6 +149,7 @@ class BoxFragment: Fragment(), Injectable {
 
         refresh_boxes.visibility = View.GONE
         shimmer.startShimmer()
+
         binding.boxes = viewModel.boxes
         viewModel.boxes.observe(viewLifecycleOwner, Observer { result ->
             if (result.status == SUCCESS) {
@@ -163,6 +165,7 @@ class BoxFragment: Fragment(), Injectable {
 
     private fun details(box: Box) {
         Timber.d("box ${box.name}")
+        activity?.startActivity<FormBoxActivity>("json" to Gson().toJson(box))
     }
 
     companion object {

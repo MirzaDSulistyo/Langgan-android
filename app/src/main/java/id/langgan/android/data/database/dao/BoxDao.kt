@@ -19,5 +19,5 @@ abstract class BoxDao {
     abstract fun load(): LiveData<List<Box>>
 
     @Query("DELETE FROM box WHERE id = :id")
-    abstract fun deleteByBoxId(id: Int)
+    abstract fun deleteByBoxId(id: String)
 }

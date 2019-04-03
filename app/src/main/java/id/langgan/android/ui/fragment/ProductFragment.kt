@@ -78,7 +78,6 @@ class ProductFragment : Fragment(), Injectable {
 
         btn_add_product.setOnClickListener {
             startActivity(Intent(activity, FormProductActivity::class.java))
-//            activity?.startActivity<FormProductActivity>()
         }
     }
 
@@ -100,10 +99,16 @@ class ProductFragment : Fragment(), Injectable {
             viewModel.refresh()
         }
 
+        refresh_products.visibility = View.GONE
+        shimmer.startShimmer()
+
         binding.products = viewModel.products
         viewModel.products.observe(viewLifecycleOwner, Observer { result ->
             adapter.submitList(result?.data)
             refresh_products.isRefreshing = false
+            refresh_products.visibility = View.VISIBLE
+            shimmer.visibility = View.GONE
+            shimmer.stopShimmer()
         })
     }
 
@@ -112,7 +117,6 @@ class ProductFragment : Fragment(), Injectable {
         val intent = Intent(activity, FormProductActivity::class.java)
         intent.putExtra("json", Gson().toJson(product))
         startActivity(intent)
-//        activity?.startActivity<FormProductActivity>("json" to Gson().toJson(product))
     }
 
     companion object {

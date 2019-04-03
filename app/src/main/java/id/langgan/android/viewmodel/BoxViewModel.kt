@@ -9,6 +9,7 @@ import id.langgan.android.model.Box
 import id.langgan.android.repository.BoxRepository
 import javax.inject.Inject
 import id.langgan.android.utility.AbsentLiveData
+import okhttp3.RequestBody
 
 class BoxViewModel
 @Inject constructor(
@@ -49,4 +50,16 @@ class BoxViewModel
                 boxRepository.getBoxes(token, id.value!!)
             }
         }
+
+    fun save(token: String, body: RequestBody): LiveData<Resource<Box>> {
+        return boxRepository.save(token, body)
+    }
+
+    fun update(token: String, id: String, fields: Map<String, String>): LiveData<Resource<Box>> {
+        return boxRepository.update(token, id, fields)
+    }
+
+    fun delete(token: String, id: String): LiveData<Resource<Box>> {
+        return boxRepository.delete(token, id)
+    }
 }

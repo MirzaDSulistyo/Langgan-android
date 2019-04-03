@@ -78,4 +78,24 @@ interface ApiService {
         @Header("token") token: String,
         @Path("id") id: String
     ): LiveData<ApiResponse<BoxList>>
+
+    @POST("box/new")
+    fun postBox(
+        @Header("token") token: String,
+        @Body body: RequestBody
+    ): Call<Box>
+
+    @FormUrlEncoded
+    @PUT("box/{id}")
+    fun putBox(
+        @Header("token") token: String,
+        @Path("id") id: String,
+        @FieldMap fields: Map<String, String>
+    ): Call<Box>
+
+    @DELETE("box/{id}")
+    fun deleteBox(
+        @Header("token") token: String,
+        @Path("id") id: String
+    ): Call<Box>
 }
