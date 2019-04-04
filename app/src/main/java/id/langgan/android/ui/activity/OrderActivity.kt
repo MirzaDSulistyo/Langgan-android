@@ -7,38 +7,43 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import id.langgan.android.R
-import id.langgan.android.ui.fragment.BoxFragment
+import id.langgan.android.ui.adapter.TabAdapter
+import id.langgan.android.ui.fragment.NewOrderFragment
+import id.langgan.android.ui.fragment.SubscriberFragment
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import javax.inject.Inject
 
-class BoxActivity : AppCompatActivity(), HasSupportFragmentInjector {
+class OrderActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_box)
+        setContentView(R.layout.activity_order)
 
         // Handle Toolbar
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar!!.title = getString(R.string.box)
+        supportActionBar!!.title = "Title"
 
-        loadFragment(BoxFragment())
-    }
+        val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
+        val viewPager = findViewById<ViewPager>(R.id.view_pager_tabs)
+        val adapter = TabAdapter(supportFragmentManager)
 
-    private fun loadFragment(fragment: Fragment?): Boolean {
-        if (fragment != null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment, fragment)
-                .commit()
-            return true
-        }
-        return false
+        val newOrderFragment = NewOrderFragment()
+        val subscriberFragment = SubscriberFragment()
+
+        adapter.addFragment(newOrderFragment, "New Order")
+        adapter.addFragment(subscriberFragment, "Subscriber")
+
+        viewPager.adapter = adapter
+        tabLayout.setupWithViewPager(viewPager)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

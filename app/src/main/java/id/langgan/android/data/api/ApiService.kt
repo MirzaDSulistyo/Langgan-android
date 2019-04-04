@@ -98,4 +98,33 @@ interface ApiService {
         @Header("token") token: String,
         @Path("id") id: String
     ): Call<Box>
+
+    /* ====== SUBSCRIPTIONS ===== */
+
+    @GET("subs/store/{id}")
+    fun getSubs(
+        @Header("token") token: String,
+        @Path("id") id: String
+    ): LiveData<ApiResponse<SubsList>>
+
+    @POST("subs/new")
+    fun postSubs(
+        @Header("token") token: String,
+        @Body body: RequestBody
+    ): Call<Subs>
+
+    @FormUrlEncoded
+    @PUT("subs/{id}")
+    fun putSubs(
+        @Header("token") token: String,
+        @Path("id") id: String,
+        @FieldMap fields: Map<String, String>
+    ): Call<Subs>
+
+    @DELETE("subs/{id}")
+    fun deleteSubs(
+        @Header("token") token: String,
+        @Path("id") id: String
+    ): Call<Subs>
+
 }

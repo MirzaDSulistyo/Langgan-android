@@ -28,4 +28,7 @@ abstract class MainActivityModule {
     @ContributesAndroidInjector(modules = [FragmentBuildersModule::class])
     abstract fun contributeSelectProductActivity(): SelectProductActivity
 
+    @ContributesAndroidInjector(modules = [FragmentBuildersModule::class])
+    abstract fun contributeOrderActivity(): OrderActivity
+
 }

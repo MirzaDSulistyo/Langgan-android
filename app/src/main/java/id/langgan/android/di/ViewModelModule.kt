@@ -37,6 +37,11 @@ abstract class ViewModelModule {
     abstract fun bindDataBoxViewModel(plan: BoxViewModel): ViewModel
 
     @Binds
+    @IntoMap
+    @ViewModelKey(SubsViewModel::class)
+    abstract fun bindDataSubsViewModel(model: SubsViewModel): ViewModel
+
+    @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 
 }

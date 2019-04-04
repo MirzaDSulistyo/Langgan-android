@@ -71,4 +71,10 @@ class AppModule {
         return db.planDao()
     }
 
+    @Singleton
+    @Provides
+    fun provideSubsDao(db: AppDb): SubsDao {
+        return db.subsDao()
+    }
+
 }

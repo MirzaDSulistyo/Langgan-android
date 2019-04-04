@@ -34,7 +34,8 @@ import kotlinx.android.synthetic.main.activity_form_box.*
 import okhttp3.MultipartBody
 import timber.log.Timber
 
-class FormBoxActivity : AppCompatActivity(), HasSupportFragmentInjector, Injectable, DeleteConfirmationDialog.NoticeDialogListener {
+class FormBoxActivity : AppCompatActivity(), HasSupportFragmentInjector, Injectable,
+    DeleteConfirmationDialog.NoticeDialogListener {
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
@@ -141,7 +142,7 @@ class FormBoxActivity : AppCompatActivity(), HasSupportFragmentInjector, Injecta
     }
 
     private fun details(product: Product) {
-//        products.add(product)
+        Timber.d("product ${product.name}")
     }
 
     private fun selectProducts() {

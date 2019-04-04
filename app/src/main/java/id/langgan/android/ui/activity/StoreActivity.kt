@@ -24,6 +24,10 @@ class StoreActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.title = getString(R.string.store)
 
+        binding.order.setOnClickListener {
+            startActivity(Intent(this, OrderActivity::class.java))
+        }
+
         binding.products.setOnClickListener {
             startActivity(Intent(this, ProductActivity::class.java))
         }

@@ -16,8 +16,9 @@ import id.langgan.android.model.*
         Box::class,
         BoxObj::class,
         Plan::class,
+        Subs::class,
         Auth::class],
-    version = 11,
+    version = 13,
     exportSchema = false
 )
 abstract class AppDb : RoomDatabase() {
@@ -32,4 +33,5 @@ abstract class AppDb : RoomDatabase() {
 
     abstract fun boxDao(): BoxDao
 
+    abstract fun subsDao(): SubsDao
 }

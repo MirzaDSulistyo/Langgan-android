@@ -24,4 +24,10 @@ abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeBoxFragment(): BoxFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeNewOrderFragment(): NewOrderFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeSubscriberFragment(): SubscriberFragment
 }
