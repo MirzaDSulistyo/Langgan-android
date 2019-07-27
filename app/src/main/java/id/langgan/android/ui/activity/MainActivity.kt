@@ -75,20 +75,18 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector, Injectable
             })
         }
 
-        bottom_navigation.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener {
-            override fun onNavigationItemSelected(item: MenuItem): Boolean {
-                var fragment : Fragment? = null
+        bottom_navigation.setOnNavigationItemSelectedListener { item ->
+            var fragment : Fragment? = null
 
-                when (item.itemId) {
-                    R.id.home_menu -> fragment = HomeFragment()
-                    R.id.favorite_menu -> fragment = FavoriteFragment()
-                    R.id.subscriptions_menu -> fragment = SubscriptionsFragment()
-                    R.id.inbox_menu -> fragment = InboxFragment()
-                    R.id.account_menu -> fragment = ProfileFragment()
-                }
-                return loadFragment(fragment)
+            when (item.itemId) {
+                R.id.home_menu -> fragment = HomeFragment()
+                R.id.favorite_menu -> fragment = FavoriteFragment()
+                R.id.subscriptions_menu -> fragment = SubscriptionsFragment()
+                R.id.inbox_menu -> fragment = InboxFragment()
+                R.id.account_menu -> fragment = ProfileFragment()
             }
-        })
+            loadFragment(fragment)
+        }
 
         loadFragment(HomeFragment())
     }
