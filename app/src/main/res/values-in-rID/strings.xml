@@ -33,4 +33,14 @@
     <string name="box_name">Box name</string>
     <string name="add_products">Add products</string>
     <string name="select_product">Select products</string>
+    <string name="profile">Profile</string>
+    <string name="view_and_edit_profile">View and edit profile</string>
+    <string name="become_a_seller">Become a seller</string>
+    <string name="list_your_product">List your products</string>
+    <string name="settings">Settings</string>
+    <string name="invite_friends">Invite friends</string>
+    <string name="refer_a_seller">Refer a seller</string>
+    <string name="get_help">Get help</string>
+    <string name="give_us_feedback">Give us feedback</string>
+    <string name="logout">Logout</string>
 </resources>

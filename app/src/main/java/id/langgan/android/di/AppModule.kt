@@ -25,7 +25,8 @@ class AppModule {
     @Provides
     fun provideApiService(): ApiService {
         return Retrofit.Builder()
-            .baseUrl("https://tranquil-shore-53254.herokuapp.com/api/")
+            //.baseUrl("https://tranquil-shore-53254.herokuapp.com/api/")
+            .baseUrl("http://192.168.43.216:3000/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .build()

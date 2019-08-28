@@ -1,98 +1,293 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <import type="id.langgan.android.model.Profile" />
 
+        <import type="id.langgan.android.model.Product"/>
+
+        <import type="java.util.List"/>
+
         <variable
             name="profile"
             type="Profile" />
 
+        <variable
+            name="products"
+            type="List&lt;Product>"/>
+
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:orientation="vertical">
+        android:background="@color/white">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Profile"
-            android:textAppearance="@style/TextAppearance.SemiBold18" />
+            android:background="@color/white"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/store"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Store"
-            android:textAppearance="@style/TextAppearance.SemiBold18"
-            app:visibleGone="@{profile.stores.size != 0}" />
+            <RelativeLayout
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circle"
+                android:layout_width="80dp"
+                android:layout_height="80dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Settings"
-            android:textAppearance="@style/TextAppearance.SemiBold18" />
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_user"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    tools:ignore="ContentDescription"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Invite friends"
-            android:textAppearance="@style/TextAppearance.SemiBold18" />
+            </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Refer a seller"
-            android:textAppearance="@style/TextAppearance.SemiBold18" />
+            <TextView
+                android:id="@+id/tv_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@{profile.user.firstName}"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance.SemiBold20"
+                tools:text="Profile"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Become a seller"
-            android:textAppearance="@style/TextAppearance.SemiBold18"
-            app:visibleGone="@{profile.stores.size == 0}"/>
+            <TextView
+                android:text="@string/view_and_edit_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:textColor="#888"
+                android:layout_gravity="center_horizontal"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="List your product"
-            android:textAppearance="@style/TextAppearance.SemiBold18"
-            app:visibleGone="@{profile.stores.size == 0}"/>
+            <RelativeLayout
+                android:id="@+id/store"
+                android:padding="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:visibleGone="@{profile.stores.size != 0}">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Get help"
-            android:textAppearance="@style/TextAppearance.SemiBold18" />
+                <ImageView
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/icon_store"
+                    android:src="@drawable/ic_briefcase"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    tools:ignore="ContentDescription"
+                    android:layout_marginEnd="20dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Give us feedback"
-            android:textAppearance="@style/TextAppearance.SemiBold18" />
+                <TextView
+                    android:layout_toRightOf="@id/icon_store"
+                    android:id="@+id/tv_store"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/store"
+                    android:textAppearance="@style/TextAppearance.SemiBold18"
+                    android:layout_toEndOf="@id/icon_store"
+                    tools:ignore="RelativeOverlap"/>
 
-        <TextView
-            android:id="@+id/logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Logout"
-            android:textAppearance="@style/TextAppearance.SemiBold18" />
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_chevron_right"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    tools:ignore="ContentDescription"
+                    android:layout_alignParentEnd="true"/>
 
-    </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/notifications"
+                android:padding="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/icon_notifications"
+                    android:src="@drawable/ic_bell"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    tools:ignore="ContentDescription"
+                    android:layout_marginEnd="20dp"/>
+
+                <TextView
+                    android:layout_toRightOf="@id/icon_notifications"
+                    android:id="@+id/tv_notifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/notifications"
+                    android:textAppearance="@style/TextAppearance.SemiBold18"
+                    android:layout_toEndOf="@id/icon_notifications"
+                    tools:ignore="RelativeOverlap"/>
+
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_chevron_right"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    tools:ignore="ContentDescription"
+                    android:layout_alignParentEnd="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/become_lender"
+                android:padding="16dp"
+                app:visibleGone="@{profile.stores.size == 0}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/icon_dollar"
+                    android:src="@drawable/ic_dollar_sign"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    tools:ignore="ContentDescription"
+                    android:layout_marginEnd="20dp"/>
+
+                <TextView
+                    android:id="@+id/tv_become_a_lender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/become_a_seller"
+                    android:layout_toRightOf="@id/icon_dollar"
+                    android:textAppearance="@style/TextAppearance.SemiBold18"
+                    android:layout_toEndOf="@id/icon_dollar"
+                    tools:ignore="RelativeOverlap"/>
+
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_chevron_right"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    tools:ignore="ContentDescription"
+                    android:layout_alignParentEnd="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/list_your_product"
+                android:padding="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:visibleGone="@{products == null}">
+
+                <ImageView
+                    android:id="@+id/icon_clip"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/ic_paperclip"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="20dp"
+                    tools:ignore="ContentDescription"/>
+
+                <TextView
+                    android:id="@+id/tv_list_your_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/list_your_product"
+                    android:layout_toRightOf="@id/icon_clip"
+                    android:textAppearance="@style/TextAppearance.SemiBold18"
+                    android:layout_toEndOf="@id/icon_clip"
+                    tools:ignore="RelativeOverlap"/>
+
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_chevron_right"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    tools:ignore="ContentDescription"
+                    android:layout_alignParentEnd="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings"
+                android:padding="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/icon_setting"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/ic_settings"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="20dp"
+                    tools:ignore="ContentDescription"/>
+
+                <TextView
+                    android:id="@+id/tv_settings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings"
+                    android:layout_toRightOf="@id/icon_setting"
+                    android:textAppearance="@style/TextAppearance.SemiBold18"
+                    android:layout_toEndOf="@id/icon_setting"
+                    tools:ignore="RelativeOverlap"/>
+
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_chevron_right"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    tools:ignore="ContentDescription"
+                    android:layout_alignParentEnd="true"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_margin="16dp"
+                android:background="#D4D4D4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/invite_friends"
+                android:textAppearance="@style/TextAppearance.SemiBold18" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/refer_a_seller"
+                android:textAppearance="@style/TextAppearance.SemiBold18" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/get_help"
+                android:textAppearance="@style/TextAppearance.SemiBold18" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/give_us_feedback"
+                android:textAppearance="@style/TextAppearance.SemiBold18" />
+
+            <TextView
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/logout"
+                android:textAppearance="@style/TextAppearance.SemiBold18" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </layout>

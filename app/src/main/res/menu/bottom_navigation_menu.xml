@@ -7,21 +7,21 @@
 
     <item
         android:id="@+id/favorite_menu"
-        android:icon="@drawable/ic_love"
+        android:icon="@drawable/ic_heart"
         android:title="@string/favorite" />
 
     <item
         android:id="@+id/subscriptions_menu"
-        android:icon="@drawable/ic_subscriptions"
+        android:icon="@drawable/ic_shopping_bag"
         android:title="@string/plan" />
 
     <item
         android:id="@+id/inbox_menu"
-        android:icon="@drawable/ic_mail"
+        android:icon="@drawable/ic_message_circle"
         android:title="@string/inbox" />
 
     <item
         android:id="@+id/account_menu"
-        android:icon="@drawable/ic_account_circle"
+        android:icon="@drawable/ic_more_horizontal"
         android:title="@string/account" />
 </menu>
